@@ -42,7 +42,7 @@ char Tetrominoes[1 /*will eventually be 7*/][4][5][5] = {
 	}
 };
 
-char Tetromino::getMino(int num, int rotation, int row, int col)
+char Tetromino::getMino(int mino, int rotation, int row, int col)
 {
-	return Tetrominoes[num][rotation][row][col];
+	return Tetrominoes[mino][rotation][row][col];
 }

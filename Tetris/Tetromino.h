@@ -6,6 +6,6 @@ class Tetromino
 public:
 	// Returns character at specified mino coordinates
 	// (Return pointer to array or bmp and index at once instead of multiple function calls?)
-	char getMino(int num, int rotation, int row, int col);
+	char getMino(int mino, int rotation, int row, int col);
 };
 
