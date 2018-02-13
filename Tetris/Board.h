@@ -22,6 +22,7 @@ public:
 	bool isFreeSpace(int x, int y);
 	bool isValidMove(int x, int y, int mino, int rotation);
 	void addToBoard(int x, int y, int mino, int rotation);
+	void detectLines();
 	void deleteLine();
 	bool isGameOver();
 	virtual ~Board();

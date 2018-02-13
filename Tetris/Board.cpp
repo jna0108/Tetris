@@ -48,10 +48,25 @@ bool Board::isValidMove(int x, int y, int mino, int rotation)
 
 void Board::addToBoard(int x, int y, int mino, int rotation)
 {
+	for (int i = x, row = 0; i < x + MINO_DIM; row++, i++) {
+		for (int j = y, col = 0; j < y + MINO_DIM; col++, j++) {
+			if (minoes->getMino(mino, rotation, row, col) == 1) {
+				board[i][j] = true;
+			}
+		}
+	}
+}
+
+// detect lines that are full
+// m * n time... is there a faster way?
+void Board::detectLines()
+{
+
 }
 
 void Board::deleteLine()
 {
+
 }
 
 bool Board::isGameOver()
