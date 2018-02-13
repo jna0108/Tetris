@@ -23,7 +23,7 @@ public:
 	bool isValidMove(int x, int y, int mino, int rotation);
 	void addToBoard(int x, int y, int mino, int rotation);
 	void detectLines();
-	void deleteLine();
+	void deleteLine(int row);
 	bool isGameOver();
 	virtual ~Board();
 private:

@@ -64,9 +64,12 @@ void Board::detectLines()
 
 }
 
-void Board::deleteLine()
+// move upper lines down?
+void Board::deleteLine(int row)
 {
-
+	for (int i = 0; i < WIDTH; i++) {
+		board[row][i] = 0;
+	}
 }
 
 bool Board::isGameOver()
