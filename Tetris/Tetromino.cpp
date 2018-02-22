@@ -7,11 +7,11 @@ char Tetrominoes[1 /*will eventually be 7*/][4][5][5] = {
 	{
 		// Top orientation
 		{
-			{0, 0, 0, 0, 0},
-			{0, 0, 1, 0, 0},
-			{0, 1, 1, 1, 0},
-			{0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0}
+			{ 0, 0, 0, 0, 0 },
+			{ 0, 0, 1, 0, 0 },
+			{ 0, 1, 1, 1, 0 },
+			{ 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0 }
 			// potential future optimization(?): represent as bmp
 			// definitely a better way to represent this
 		},

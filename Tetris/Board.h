@@ -11,7 +11,7 @@
 	5. Change shape of board as pieces fall (addtoboard)
 */
 
-#define HEIGHT 20
+#define HEIGHT 21
 #define WIDTH 10
 #define MINO_DIM 5
 
@@ -25,7 +25,6 @@ public:
 	void detectLines();
 	void deleteLine(int row);
 	bool isGameOver();
-	virtual ~Board();
 private:
 	bool board[HEIGHT][WIDTH];
 	Tetromino *minoes;
