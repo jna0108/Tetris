@@ -73,7 +73,7 @@ void Board::deleteLine(int row)
 
 }
 
-// detect lines that are full
+// detect lines that are full in
 // m * n time... is there a faster way?
 void Board::detectLines()
 {
@@ -102,9 +102,3 @@ bool Board::isGameOver()
 	}
 	return false;
 }
-
-Board::~Board()
-{
-}
-
-

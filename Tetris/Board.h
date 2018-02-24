@@ -3,12 +3,7 @@
 #include "Tetromino.h"
 
 /*
-	Lots to do in this class:
-	1. Detect Collisions (isFreeSpace/isValidMove)
-	2. Structure pieces 
-	3. Delete lines (deleteline)
-	4. Initialize Board (2d array) (initboard)
-	5. Change shape of board as pieces fall (addtoboard)
+	pixels pixels pixels
 */
 
 #define HEIGHT 21
