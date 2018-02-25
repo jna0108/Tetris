@@ -2,9 +2,11 @@
 #include "Board.h"
 
 
-Board::Board(Tetromino *tetrominoes)
+Board::Board(Tetromino *tetrominoes, int boardOriginX, int boardOriginY)
 {
 	minoes = tetrominoes;
+	origX = boardOriginX;
+	origY = boardOriginY;
 	initBoard();
 }
 

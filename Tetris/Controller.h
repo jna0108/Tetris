@@ -17,16 +17,17 @@
 class Controller
 {
 public:
-	Controller(Board *board, Tetromino *minoes);
-	void draw();
+	Controller(Board* board, Tetromino* minoes);
+	void draw(SDL_Renderer* renderer);
 	void generatePiece();
 private:
 	Board *board;
 	Tetromino *minoes;
-	int currMino;
+	int cMino, cRot, cX, cY; // current piece
+	int nMino, nRot, nX, nY; // next piece
 
 	void initGame();
-	void drawBoard();
-	void drawMino();
+	void drawBoard(SDL_Renderer* renderer);
+	void drawMino(SDL_Renderer* renderer, int mino, int rotation, int x, int y);
 };
 
