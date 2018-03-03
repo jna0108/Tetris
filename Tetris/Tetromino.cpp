@@ -2,7 +2,7 @@
 #include "Tetromino.h"
 
 // 7 Mino Types, 4 Rotations per type
-char Tetrominoes[1 /*will eventually be 7*/][4][5][5] = {
+uint8_t Tetrominoes[1 /*will eventually be 7*/][4][5][5] = {
 	// T Tetromino
 	{
 		// Top orientation
@@ -42,7 +42,7 @@ char Tetrominoes[1 /*will eventually be 7*/][4][5][5] = {
 	}
 };
 
-char Tetromino::getMino(int mino, int rotation, int row, int col)
+uint8_t Tetromino::getMino(int mino, int rotation, int row, int col)
 {
 	return Tetrominoes[mino][rotation][row][col];
 }

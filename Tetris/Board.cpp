@@ -13,11 +13,14 @@ Board::Board(Tetromino *tetrominoes, int boardOriginX, int boardOriginY, int dim
 
 void Board::initBoard()
 {
-	for (int row = 0; row < HEIGHT; row++) {
-		for (int col = 0; col < WIDTH; col++) {
-			board[row][col] = true;
+	for (int row = 0; row < height; row++) {
+		for (int col = 0; col < width; col++) {
+			board[row][col] = false;
 		}
 	}
+	/*for (int i = 0; i < width; i++) {
+		board[0][i] = true;
+	}*/
 }
 
 // Check if space is free
@@ -33,7 +36,7 @@ bool Board::isValidMove(int x, int y, int mino, int rotation) {
 			int block = minoes->getMino(mino, rotation, row, col);
 
 			// check for collision with walls
-			if (i < 0 || j < 0 || i > HEIGHT - 1 || j > WIDTH - 1) {
+			if (i < 0 || j < 0 || i > height - 1 || j > width - 1) {
 				if (block == 1)
 					return false;
 			}
@@ -62,15 +65,15 @@ void Board::addToBoard(int x, int y, int mino, int rotation)
 // move lines above row downwards
 void Board::deleteLine(int row)
 {
-	for (int i = row; i < HEIGHT - 1; i++) {
-		for (int j = 0; j < WIDTH; j++) {
+	for (int i = row; i < height - 1; i++) {
+		for (int j = 0; j < width; j++) {
 			board[i][j] = board[i+ 1][j];
 		}
 	}
 	
 	// make sure top row is clear
-	for (int j = 0; j < WIDTH; j++) {
-		board[HEIGHT - 1][j] = false;
+	for (int j = 0; j < width; j++) {
+		board[height - 1][j] = false;
 	}
 
 
@@ -80,15 +83,15 @@ void Board::deleteLine(int row)
 // m * n time... is there a faster way?
 void Board::detectLines()
 {
-	for (int line = 0; line < HEIGHT; line++) {
+	for (int line = 0; line < height; line++) {
 		int j = 0;
-		while (j < WIDTH) {
+		while (j < width) {
 			if (board[line][j] == false) {
 				break;
 			}
 			j++;
 		}
-		if (j == WIDTH) {
+		if (j == width) {
 			deleteLine(line);
 			line--;
 		}
@@ -98,8 +101,8 @@ void Board::detectLines()
 
 bool Board::isGameOver()
 {
-	for (int j = 0; j < WIDTH; j++) {
-		if (board[HEIGHT][j] == true) {
+	for (int j = 0; j < width; j++) {
+		if (board[height][j] == true) {
 			return true;
 		}
 	}

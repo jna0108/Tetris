@@ -25,7 +25,7 @@ private:
 	Tetromino *minoes;
 	int cMino, cRot, cX, cY;		// current piece
 	int nMino;						// next piece
-	const int nRot = 0, nX = 0, nY = 0;	// next piece's fields are always the same
+	const int nRot = 3, nX = 12, nY = 2;	// next piece's fields are always the same
 
 	void initGame();
 	void drawBoard(SDL_Renderer* renderer);

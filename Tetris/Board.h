@@ -6,8 +6,6 @@
 	pixels pixels pixels
 */
 
-#define HEIGHT 20							// height of board in blocks (1 extra row at top to check for death)
-#define WIDTH 10							// width of board in blocks
 #define MINO_DIM 5							// each mino has 5 blocks
 
 class Board
@@ -21,10 +19,12 @@ public:
 	void deleteLine(int row);
 	bool isGameOver();
 
-	int origX, origY, block_dim;
-	int height = 20, width = 10;
+	int origX, origY;				// top left corner of board
+	int block_dim;					// side length of block in pixels	
+	int height = 20, width = 10;	// height and width in blocks
 private:
-	bool board[HEIGHT][WIDTH];
+	bool board[20][10];
+	int mino_size = 5;
 	Tetromino *minoes;
 	void initBoard();
 };
