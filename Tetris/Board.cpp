@@ -18,9 +18,6 @@ void Board::initBoard()
 			board[row][col] = false;
 		}
 	}
-	/*for (int i = 0; i < width; i++) {
-		board[0][i] = true;
-	}*/
 }
 
 // Check if space is free

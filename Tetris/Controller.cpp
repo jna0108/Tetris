@@ -24,19 +24,17 @@ void Controller::generatePiece()
 	cY = -1;
 
 	// Spawn next piece
-	//nMino = rand() % 7;
+	nMino = rand() % 7;
 }
 
 void Controller::initGame()
 {
 	// Spawn initial piece
-	//cMino = rand() % 7; // 0 to 6
-	cMino = 0;
+	cMino = rand() % 7; // 0 to 6
 	cRot = 0, cX = 2, cY = -1; // initial rotation and spawn location
 
 	// Spawn initial next piece
-	//nMino = rand() % 7;
-	nMino = 0;
+	nMino = rand() % 7;
 }
 
 void Controller::drawBoard(SDL_Renderer* renderer)
