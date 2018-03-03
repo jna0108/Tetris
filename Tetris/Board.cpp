@@ -36,7 +36,6 @@ bool Board::isValidMove(int x, int y, int mino, int rotation) {
 			int block = minoes->getMino(mino, rotation, row, col);
 			if (block > 0) {
 				// check for collision with walls
-				//printf("x: %i, y: %i, row: %i, col: %i\n", j, i, row, col);
 				if (j < 0 || j > width - 1 || i >= height ) {
 					return false;
 				}
@@ -53,9 +52,9 @@ bool Board::isValidMove(int x, int y, int mino, int rotation) {
 
 void Board::addToBoard(int x, int y, int mino, int rotation)
 {
-	for (int i = x, row = 0; i < x + MINO_DIM; row++, i++) {
-		for (int j = y, col = 0; j < y + MINO_DIM; col++, j++) {
-			if (minoes->getMino(mino, rotation, row, col) == 1) {
+	for (int i = y, row = 0; i < y + MINO_DIM; row++, i++) {
+		for (int j = x, col = 0; j < x + MINO_DIM; col++, j++) {
+			if (minoes->getMino(mino, rotation, row, col) > 0) {
 				board[i][j] = true;
 			}
 		}
@@ -65,9 +64,9 @@ void Board::addToBoard(int x, int y, int mino, int rotation)
 // move lines above row downwards
 void Board::deleteLine(int row)
 {
-	for (int i = row; i < height - 1; i++) {
+	for (int i = row; i > 0; i--) {
 		for (int j = 0; j < width; j++) {
-			board[i][j] = board[i+ 1][j];
+			board[i][j] = board[i - 1][j];
 		}
 	}
 	
@@ -83,7 +82,7 @@ void Board::deleteLine(int row)
 // m * n time... is there a faster way?
 void Board::detectLines()
 {
-	for (int line = 0; line < height; line++) {
+	for (int line = height - 1; line >= 0; line--) {
 		int j = 0;
 		while (j < width) {
 			if (board[line][j] == false) {
@@ -93,7 +92,7 @@ void Board::detectLines()
 		}
 		if (j == width) {
 			deleteLine(line);
-			line--;
+			line++;
 		}
 	}
 }
