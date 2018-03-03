@@ -97,7 +97,7 @@ void Board::detectLines()
 	}
 }
 
-
+// Checks top row for game over
 bool Board::isGameOver()
 {
 	for (int j = 0; j < width; j++) {

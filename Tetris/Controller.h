@@ -4,16 +4,6 @@
 #include "Tetromino.h"
 #include <time.h>
 
-/* 
-	Draws the board and pieces
-		Pass the renderer in from main function to draw
-	Generate random pieces
-	Clears the screen
-	Updates the screen
-	Takes care of key presses
-	Makes pieces move down
-*/
-
 class Controller
 {
 public:
