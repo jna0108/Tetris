@@ -2,11 +2,12 @@
 #include "Board.h"
 
 
-Board::Board(Tetromino *tetrominoes, int boardOriginX, int boardOriginY)
+Board::Board(Tetromino *tetrominoes, int boardOriginX, int boardOriginY, int dim)
 {
 	minoes = tetrominoes;
 	origX = boardOriginX;
 	origY = boardOriginY;
+	block_dim = dim;
 	initBoard();
 }
 
@@ -14,7 +15,7 @@ void Board::initBoard()
 {
 	for (int row = 0; row < HEIGHT; row++) {
 		for (int col = 0; col < WIDTH; col++) {
-			board[row][col] = false;
+			board[row][col] = true;
 		}
 	}
 }
@@ -69,7 +70,7 @@ void Board::deleteLine(int row)
 	
 	// make sure top row is clear
 	for (int j = 0; j < WIDTH; j++) {
-		board[HEIGHT][j] = false;
+		board[HEIGHT - 1][j] = false;
 	}
 
 
@@ -79,9 +80,8 @@ void Board::deleteLine(int row)
 // m * n time... is there a faster way?
 void Board::detectLines()
 {
-	int j;
 	for (int line = 0; line < HEIGHT; line++) {
-		j = 0;
+		int j = 0;
 		while (j < WIDTH) {
 			if (board[line][j] == false) {
 				break;
@@ -90,6 +90,7 @@ void Board::detectLines()
 		}
 		if (j == WIDTH) {
 			deleteLine(line);
+			line--;
 		}
 	}
 }

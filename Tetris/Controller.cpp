@@ -38,7 +38,15 @@ void Controller::initGame()
 
 void Controller::drawBoard(SDL_Renderer* renderer)
 {
-
+	for (int i = 0; i < HEIGHT; i++) {
+		for (int j = 0; j < WIDTH; j++) {
+			if (!board->isFreeSpace(i, j)) {
+				SDL_Rect block = { board->origX + j * board->block_dim + 1, board->origY + i * board->block_dim + 1, board->block_dim - 2, board->block_dim - 2 };
+				SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
+				SDL_RenderFillRect(renderer, &block);
+			}
+		}
+	}
 }
 
 void Controller::drawMino(SDL_Renderer* renderer, int mino, int rotation, int x, int y)
