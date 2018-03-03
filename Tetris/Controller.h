@@ -20,11 +20,11 @@ public:
 	Controller(Board* board, Tetromino* minoes);
 	void draw(SDL_Renderer* renderer);
 	void generatePiece();
+	int cMino, cRot, cX, cY;				// current piece
 private:
 	Board *board;
 	Tetromino *minoes;
-	int cMino, cRot, cX, cY;		// current piece
-	int nMino;						// next piece
+	int nMino;								// next piece
 	const int nRot = 3, nX = 12, nY = 2;	// next piece's fields are always the same
 
 	void initGame();

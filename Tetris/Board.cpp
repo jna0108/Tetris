@@ -31,23 +31,23 @@ bool Board::isFreeSpace(int x, int y)
 
 // (x, y) is top left of 5x5 array
 bool Board::isValidMove(int x, int y, int mino, int rotation) {
-	for (int i = x, row = 0; i < x + MINO_DIM; row++, i++) {
-		for (int j = y, col = 0; j < y + MINO_DIM; col++, j++) {
+	for (int i = y, row = 0; i < y + MINO_DIM; row++, i++) {
+		for (int j = x, col = 0; j < x + MINO_DIM; col++, j++) {
 			int block = minoes->getMino(mino, rotation, row, col);
-
-			// check for collision with walls
-			if (i < 0 || j < 0 || i > height - 1 || j > width - 1) {
-				if (block == 1)
+			if (block > 0) {
+				// check for collision with walls
+				//printf("x: %i, y: %i, row: %i, col: %i\n", j, i, row, col);
+				if (j < 0 || j > width - 1 || i >= height ) {
 					return false;
-			}
-			
-			// check for collision with board
-			if ((block == 1) && isFreeSpace(i, j)) {
-				return false;
+				}
+
+				// check for collision with board
+				if (!isFreeSpace(i, j)) {
+					return false;
+				}
 			}
 		}
 	}
-
 	return true;
 }
 
@@ -73,7 +73,7 @@ void Board::deleteLine(int row)
 	
 	// make sure top row is clear
 	for (int j = 0; j < width; j++) {
-		board[height - 1][j] = false;
+		board[0][j] = false;
 	}
 
 
@@ -102,7 +102,7 @@ void Board::detectLines()
 bool Board::isGameOver()
 {
 	for (int j = 0; j < width; j++) {
-		if (board[height][j] == true) {
+		if (board[0][j] == true) {
 			return true;
 		}
 	}
