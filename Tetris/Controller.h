@@ -19,5 +19,5 @@ private:
 
 	void initGame();
 	void drawBoard(SDL_Renderer* renderer);
-	void drawMino(SDL_Renderer* renderer, int mino, int rotation, int x, int y);
+	void drawMino(SDL_Renderer* renderer, int mino, int rotation, float x, float y);
 };

@@ -12,7 +12,14 @@ void Controller::draw(SDL_Renderer* renderer)
 {
 	drawBoard(renderer);
 	drawMino(renderer, cMino, cRot, cX, cY);
-	drawMino(renderer, nMino, nRot, nX, nY);
+	if (nMino == 1) {
+		drawMino(renderer, nMino, nRot, nX - 0.5, nY - 0.5);
+	} else if (nMino == 2) {
+		drawMino(renderer, nMino, nRot, nX - 0.5, nY);
+	} else {
+		drawMino(renderer, nMino, nRot, nX, nY);
+	}
+	
 }
 
 void Controller::generatePiece()
@@ -43,27 +50,72 @@ void Controller::drawBoard(SDL_Renderer* renderer)
 		for (int j = 0; j < board->width; j++) {
 			if (!board->isFreeSpace(i, j)) {
 				SDL_Rect block = { board->origX + j * board->block_dim + 1, board->origY + i * board->block_dim + 1, board->block_dim - 2, board->block_dim - 2 };
-				SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
+				switch (board->getBlock(i, j)) {
+					case 1:
+						SDL_SetRenderDrawColor(renderer, 226, 66, 244, 0xFF);
+						break;
+					case 2:
+						SDL_SetRenderDrawColor(renderer, 78, 226, 252, 0xFF);
+						break;
+					case 3:
+						SDL_SetRenderDrawColor(renderer, 244, 247, 79, 0xFF);
+						break;
+					case 4:
+						SDL_SetRenderDrawColor(renderer, 19, 43, 219, 0xFF);
+						break;
+					case 5:
+						SDL_SetRenderDrawColor(renderer, 232, 127, 16, 0xFF);
+						break;
+					case 6:
+						SDL_SetRenderDrawColor(renderer, 19, 239, 52, 0xFF);
+						break;
+					case 7:
+						SDL_SetRenderDrawColor(renderer, 226, 27, 27, 0xFF);
+						break;
+				}
 				SDL_RenderFillRect(renderer, &block);
 			}
 		}
 	}
 }
 
-void Controller::drawMino(SDL_Renderer* renderer, int mino, int rotation, int x, int y)
+void Controller::drawMino(SDL_Renderer* renderer, int mino, int rotation, float x, float y)
 {
 	int pX = board->origX + x * board->block_dim;
 	int pY = board->origY + y * board->block_dim;
 	for (int j = 0; j < MINO_DIM; j++) {
 		for (int i = 0; i < MINO_DIM; i++) {
-			char pixel = minoes->getMino(mino, rotation, j, i);
-			if (pixel) {
+			uint8_t pixel = minoes->getMino(mino, rotation, j, i);
+			if (pixel > 0) {
 				SDL_Rect border = { pX + i * board->block_dim - 1, pY + j * board->block_dim - 1, board->block_dim + 2, board->block_dim + 2 };
 				SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
 				SDL_RenderDrawRect(renderer, &border);
 
 				SDL_Rect block = { pX + i * board->block_dim, pY + j * board->block_dim, board->block_dim, board->block_dim};
-				SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
+				switch (pixel) {
+					case 1:
+						SDL_SetRenderDrawColor(renderer, 226, 66, 244, 0xFF);
+						break;
+					case 2:
+						SDL_SetRenderDrawColor(renderer, 78, 226, 252, 0xFF);
+						break;
+					case 3:
+						SDL_SetRenderDrawColor(renderer, 244, 247, 79, 0xFF);
+						break;
+					case 4:
+						SDL_SetRenderDrawColor(renderer, 19, 43, 219, 0xFF);
+						break;
+					case 5:
+						SDL_SetRenderDrawColor(renderer, 232, 127, 16, 0xFF);
+						break;
+					case 6:
+						SDL_SetRenderDrawColor(renderer, 19, 239, 52, 0xFF);
+						break;
+					case 7:
+						SDL_SetRenderDrawColor(renderer, 226, 27, 27, 0xFF);
+						break;
+				}
+
 				SDL_RenderFillRect(renderer, &block);
 				SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
 				SDL_RenderDrawRect(renderer, &block);

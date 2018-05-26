@@ -12,6 +12,7 @@ class Board
 {
 public:
 	Board(Tetromino *tetrominoes, int boardOriginX, int boardOriginY, int dim);
+	int getBlock(int x, int y);
 	bool isFreeSpace(int x, int y);
 	bool isValidMove(int x, int y, int mino, int rotation);
 	void addToBoard(int x, int y, int mino, int rotation);
@@ -23,7 +24,7 @@ public:
 	int block_dim;					// side length of block in pixels	
 	int height = 20, width = 10;	// height and width in blocks
 private:
-	bool board[20][10];
+	uint8_t board[20][10];
 	int mino_size = 5;
 	Tetromino *minoes;
 	void initBoard();
