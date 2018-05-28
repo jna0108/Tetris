@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Board.h"
 
-
 Board::Board(Tetromino *tetrominoes, int boardOriginX, int boardOriginY, int dim)
 {
 	minoes = tetrominoes;
